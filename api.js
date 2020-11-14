@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -18,11 +19,19 @@ app.get('/juegos/:nombreJuego', function(req, res) {
 
 { nombreJuego: 'DarkSouls'}
 
-app.get('/sample/:id', function(req, res) {
+//Ejemplo Body
+app.post('/juegos/', function(req, res) {
 
-  var id = req.params.id; 
-
+    console.log(req.body.name)
+    res.send('Pagina de juegos')
    
+});
+
+//Ejemplo Query
+app.post('/peliculas/', function(req, res) {
+
+    console.log(req.query.name)
+    res.send('Pagina de Peliculas')
 });
 
 app.listen(port, () => {
