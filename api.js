@@ -7,6 +7,8 @@ let listaJuegos = ["DarkSouls", "CyberPunk", "Hades"]
 let listaPeliculas = ["Advengers", "300", "Interestelar"]
 let listaSeries = ["La casa de Papel", "Mr Robot", "One Punch Man"]
 
+var lista = "";
+
 {   opcion: 'juegos'
     opcion: 'peliculas'
     opcion: 'series'
@@ -18,26 +20,30 @@ app.get('/', (req, res) => {
 
 app.get('/:opcion', function(req, res) {
 
+    lista="";
     console.log()
     if(req.params.opcion === 'juegos'){
         listaJuegos.forEach(function(elemento, indice, array) {
-            console.log(elemento, indice);
-            res.send(elemento, indice)
+            console.log(elemento, indice)
+            lista += elemento+"<br>";
         })
-    }
+        res.send(lista)
+    } else
 
     if(req.params.opcion === 'peliculas'){
-        listaJuegos.forEach(function(elemento, indice, array) {
-            console.log(elemento, indice);
-            res.send(elemento, indice)
+        listaPeliculas.forEach(function(elemento, indice, array) {
+            console.log(elemento, indice)
+            lista += elemento+"<br>";
         })
-    }
+        res.send(lista)
+    } else
 
     if(req.params.opcion === 'series'){
-        listaJuegos.forEach(function(elemento, indice, array) {
-            console.log(elemento, indice);
-            res.send(elemento, indice)
+        listaSeries.forEach(function(elemento, indice, array) {
+            console.log(elemento, indice)
+            lista += elemento+"<br>";
         })
+        res.send(lista)
     }
   
 })
